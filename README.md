@@ -19,3 +19,20 @@ tablex<-function(x){
 ggtexttable(table3,rows = NULL)
 }
 ```
+
+
+```{r}
+long_summary1<-dental%>%
+  group_by(group)%>%
+  tally(!is.na(`occupational score`))
+p1<-ggplot(dental, aes(x=factor(group), y=`occupational score`)) + stat_boxplot(geom = "errorbar", width = 0.5) +
+  geom_boxplot()+
+  labs( x="",y= "",
+        title= "Figure 2A: Box plots of Occupational Score")+
+  guides(fill = FALSE) + 
+  geom_text(data = long_summary1, aes(x=factor(group),y=Inf,label = paste("n=",n)), 
+            vjust = 1.1,check_overlap = TRUE)+theme_bw()+
+  geom_text(data = long_summary1, aes(x=1.5,y=Inf,vjust=3,label = paste("p-value <0.01")))
+  
+  
+  ```

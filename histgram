@@ -1,0 +1,16 @@
+p1<-ggplot(mix_no_concep, aes(x = cyc_len_)) +
+  geom_histogram(aes(y=..density..),bins = 15,binwidth = 1, fill = "white", col="black")+
+  labs(title = "A: Distribution of Cycle Length",x='Cycle Length (days)',y='Percent',subtitle = '3,137 non-conception cycles, 562 women 18-40 years old')+
+  #scale_y_continuous(limits = c(0.01,0.20))+
+  theme_bw()
+  
+
+  library(grid)
+library(gridExtra)
+
+
+p5<-grid.arrange(p2,p3,nrow=2,heights=c(0.8,1))
+grid.arrange(p2,p3,ncol=2,heights=c(0.8,1))
+
+
+  ggsave("p1.jpeg",plot=p1,width=18,height=12,units=c("cm"),dpi=1000)

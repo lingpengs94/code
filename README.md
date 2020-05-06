@@ -33,8 +33,10 @@ p1<-ggplot(dental, aes(x=factor(group), y=`occupational score`)) + stat_boxplot(
   geom_text(data = long_summary1, aes(x=factor(group),y=Inf,label = paste("n=",n)), 
             vjust = 1.1,check_overlap = TRUE)+theme_bw()+
   geom_text(data = long_summary1, aes(x=1.5,y=Inf,vjust=3,label = paste("p-value <0.01")))
+  ```
   
   
+  ```{r}
  library(sjPlot) 
   
   

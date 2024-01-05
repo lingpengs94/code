@@ -1,5 +1,6 @@
 
 # trucatch
+```{r}
 V3<-lapply(1:n, function(i){
   phi<-x1[i]%*%beta[3]+bsMat0[i,]%*%eta[,3]+b[2*K*i-2*K+2*3-1]
 tryCatch(
@@ -19,6 +20,7 @@ tryCatch(
 )}
 )
 
+````
 
 # code
 

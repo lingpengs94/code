@@ -1,3 +1,25 @@
+
+# trucatch
+V3<-lapply(1:n, function(i){
+  phi<-x1[i]%*%beta[3]+bsMat0[i,]%*%eta[,3]+b[2*K*i-2*K+2*3-1]
+tryCatch(
+  {
+    return(rmultinom(1, 1, 
+                     c(1-pnorm(phi),
+                       exp(-omega[i]*gammaxi[5]^2/2-omega[i]*gammaxi[5]*(Z[i,-c(5,6)]%*%gammaxi[-c(5,6)]+gammaxi[5]-(s[i]-.5)/omega[i]))*
+                         (pnorm(phi)-pnorm(phi-cut3)),
+                       exp(-omega[i]*gammaxi[6]^2/2-omega[i]*gammaxi[6]*(Z[i,-c(5,6)]%*%gammaxi[-c(5,6)]+gammaxi[6]-(s[i]-.5)/omega[i]))*
+                         pnorm(phi-cut3) 
+                     )
+    ))
+  },
+  error=function(e) {
+    return(i)
+  }
+)}
+)
+
+
 # code
 
 ```{r}
